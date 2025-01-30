@@ -17,3 +17,6 @@ installer-files/**
 
 # VSCode files
 .VSCode
+
+# File where I store potential login and password
+login.txt
