@@ -10,6 +10,7 @@ resource "aws_vpc" "bastion-vpc" {
   
   tags = {
     Name = "bastion-vpc"
+    created-for = "BASTION"
   }
 }
 
@@ -19,6 +20,7 @@ resource "aws_internet_gateway" "bastion-igw" {
 
   tags = {
     Name = "bastion-igw"
+    created-for = "BASTION"
   }
 }
 
@@ -30,6 +32,7 @@ resource "aws_subnet" "bastion-subnet" {
   
   tags = {
     Name = "bastion-subnet"
+    created-for = "BASTION"
   }
 }
 
@@ -44,6 +47,7 @@ resource "aws_route_table" "bastion-rt" {
 
   tags = {
     Name = "bastion-rt"
+    created-for = "BASTION"
   }
 }
 
@@ -51,10 +55,6 @@ resource "aws_route_table" "bastion-rt" {
 resource "aws_route_table_association" "bastion-rta" {
   subnet_id      = aws_subnet.bastion-subnet.id
   route_table_id = aws_route_table.bastion-rt.id
-
-  tags = {
-    Name = "bastion-rta"
-  }    
 }
 
 # Create a Security Group that allows SSH
@@ -79,6 +79,7 @@ resource "aws_security_group" "bastion-sg" {
 
   tags = {
     Name = "bastion-sg"
+    created-for = "BASTION"
   }    
 }
 
@@ -86,10 +87,6 @@ resource "aws_security_group" "bastion-sg" {
 resource "tls_private_key" "bastion-key" {
   algorithm = "RSA"
   rsa_bits  = 4096
-
-  tags = {
-    Name = "bastion-key"
-  }    
 }
 
 # Create AWS Key Pair using the generated public key
@@ -99,6 +96,7 @@ resource "aws_key_pair" "bastion-key-pair" {
 
   tags = {
     Name = "bastion-key-pair"
+    created-for = "BASTION"
   }  
 }
 
@@ -107,10 +105,6 @@ resource "local_file" "private_key_file" {
   content  = tls_private_key.bastion-key.private_key_pem
   file_permission = "0600"
   filename = "bastion-key.pem"
-
-  tags = {
-    Name = "private_key_file"
-  }
 }
 
 # Create an EC2 instance in the public subnet
@@ -125,5 +119,6 @@ resource "aws_instance" "bastion-instance" {
   
   tags = {
     Name = "bastion-instance"
+    created-for = "BASTION"
   }
 }
