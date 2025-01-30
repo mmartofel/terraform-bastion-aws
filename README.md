@@ -27,7 +27,7 @@ You can check of you've done afterwords:
 
 
 > Note: if your output sucks you can set:
-
+>
 > `export AWS_PAGER=""`
 
 ---
