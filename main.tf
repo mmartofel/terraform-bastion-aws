@@ -108,7 +108,7 @@ resource "local_file" "private_key_file" {
 }
 
 # Create an EC2 instance in the public subnet
-resource "aws_instance" "bastion-instance" {
+resource "aws_instance" "bastion-host" {
   # ami                          = "ami-00d7be712d19c601f"                # al2023-ami-2023.6.20250123.4-kernel-6.1-x86_64 (eu-central-1 region)
   ami                          = "ami-0ac4dfaf1c5c0cce9"                # al2023-ami-2023.6.20250123.4-kernel-6.1-x86_64 (us-east-1 region)
   instance_type                = "t2.micro"                             # Free tier eligible
@@ -118,7 +118,7 @@ resource "aws_instance" "bastion-instance" {
   key_name                     = aws_key_pair.bastion-key-pair.key_name # Attach the new key pair
   
   tags = {
-    Name = "bastion-instance"
+    Name = "bastion-host"
     created-for = "BASTION"
   }
 }
