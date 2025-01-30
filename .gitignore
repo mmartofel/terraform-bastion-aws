@@ -1,0 +1,19 @@
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+openshift_pull_secret.json
+.terraform.lock.hcl
+*.pem
+installer-files/**
+
+# OS X files
+.DS_Store
+
+# VSCode files
+.VSCode
