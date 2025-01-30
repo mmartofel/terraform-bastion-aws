@@ -26,9 +26,9 @@ You can check of you've done afterwords:
 `aws configure list`
 
 
-Note: if your output sucks you can set:
+> Note: if your output sucks you can set:
 
-`export AWS_PAGER=""`
+> `export AWS_PAGER=""`
 
 ---
 
@@ -44,10 +44,10 @@ It's simple three steps job.
 
 Once done, monitor your AWS instance and finally login to with SSH client.
 
-Note: 
-
-after terraform run you will find the file `bastion-key.pem` at your work directory.
-that's your gateway to connect to bastion host just created
+> Note: 
+>
+> after terraform run you will find the file `bastion-key.pem` at your work directory.
+> that's your gateway to connect to bastion host just created
 
 ssh login command that you can get to bastion host looks like that:
 
