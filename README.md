@@ -7,13 +7,14 @@
 #### How to get started with AWS access?
 
 That repo do not provide instructions to setup AWS accout. We presume it's allready set for you.
-So first step is to configure AWS access. 
+
+So first step is to configure AWS access.
 
 Please issue first:
 
 `aws configure`
 
-provide:
+then provide:
 
 ``AWS_ACCESS_KEY_ID``
 
@@ -21,14 +22,14 @@ provide:
 
 ``AWS_DEFAULT_REGION``
 
-You can check of you've done afterwords:
+Now you can check of you've done afterwords:
 
 `aws configure list`
 
-
-> Note: if your output sucks you can set:
+> *Note:*
+> if your terminal output sucks you can set:
 >
-> `export AWS_PAGER=""`
+>  `export AWS_PAGER=""`
 
 ---
 
@@ -44,7 +45,7 @@ It's simple three steps job.
 
 Once done, monitor your AWS instance and finally login to with SSH client.
 
-> Note: 
+> *Note:*
 >
 > after terraform run you will find the file `bastion-key.pem` at your work directory.
 > that's your gateway to connect to bastion host just created
@@ -59,4 +60,3 @@ I provided some you can copy-paste at `install-tools.sh`
 Have fun exploring!
 
 ---
-
