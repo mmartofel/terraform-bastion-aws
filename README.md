@@ -16,7 +16,9 @@ Please issue first:
 provide:
 
 ``AWS_ACCESS_KEY_ID``
+
 ``AWS_SECRET_ACCESS_KEY``
+
 ``AWS_DEFAULT_REGION``
 
 You can check of you've done afterwords:
