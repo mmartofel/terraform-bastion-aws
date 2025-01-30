@@ -1,6 +1,6 @@
 ## Terraform script to create bastion host at AWS
 
-### This repo has being created to bootstrap bastion host at AWS. It have external access to provide further installs like Red Hat OpenShift or any other software required.
+#### This repo has being created to bootstrap bastion host at AWS. It have external access to provide further installs like Red Hat OpenShift or any other software required.
 
 ---
 
@@ -15,9 +15,9 @@ Please issue first:
 
 provide:
 
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-AWS_DEFAULT_REGION
+``AWS_ACCESS_KEY_ID``
+``AWS_SECRET_ACCESS_KEY``
+``AWS_DEFAULT_REGION``
 
 You can check of you've done afterwords:
 
@@ -35,13 +35,17 @@ Note: if your output sucks you can set:
 It's simple three steps job.
 
 `terraform init`
+
 `terraform plan`
+
 `terraform apply`
 
 Once done, monitor your AWS instance and finally login to with SSH client.
 
-Note: after terraform run you will find the file `bastion-key.pem` at your work directory.
-      that's your gateway to connect to bastion host just created
+Note: 
+
+after terraform run you will find the file `bastion-key.pem` at your work directory.
+that's your gateway to connect to bastion host just created
 
 ssh login command that you can get to bastion host looks like that:
 
