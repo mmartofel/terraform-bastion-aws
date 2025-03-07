@@ -50,12 +50,11 @@ Once done, monitor your AWS instance and finally login to with SSH client.
 > after terraform run you will find the file `bastion-key.pem` at your work directory.
 > that's your gateway to connect to bastion host just created
 
-ssh login command that you can get to bastion host looks like that:
+ssh login command will be at the end of terraform output, for example:
 
-`ssh -i "bastion-key.pem" ec2-user@[PUBLIC_IP]`
+`ssh_command = "ssh -i bastion-key.pem ec2-user@3.93.188.137"`
 
-after you successfull log in to the host, you may install additional, required packages
-I provided some you can copy-paste at `install-tools.sh`
+If you require to install additional packages, you can use `install-tools.sh` script I provided as an example.
 
 Have fun exploring!
 

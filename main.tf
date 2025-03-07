@@ -116,9 +116,14 @@ resource "aws_instance" "bastion-host" {
   vpc_security_group_ids       = [aws_security_group.bastion-sg.id]     # Assign security group
   associate_public_ip_address  = true                                   # Attach a public IP
   key_name                     = aws_key_pair.bastion-key-pair.key_name # Attach the new key pair
+  user_data                    = file("install-tools.sh")               # Path to your install script
   
   tags = {
     Name = "bastion-host"
     created-for = "BASTION"
   }
+}
+
+output "ssh_command" {
+  value = "ssh -i bastion-key.pem ec2-user@${aws_instance.bastion-host.public_ip}"
 }
