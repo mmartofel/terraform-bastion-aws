@@ -1,7 +1,7 @@
 # Specify the Terraform provider for AWS
 provider "aws" {
   # region = "eu-central-1" # Change this to your preferred region
-  region = "us-east-1" # Change this to your preferred region
+  region = "us-east-2" # Change this to your preferred region
 }
 
 # Create a VPC
@@ -110,7 +110,7 @@ resource "local_file" "private_key_file" {
 # Create an EC2 instance in the public subnet
 resource "aws_instance" "bastion-host" {
   # ami                          = "ami-00d7be712d19c601f"                # al2023-ami-2023.6.20250123.4-kernel-6.1-x86_64 (eu-central-1 region)
-  ami                          = "ami-0ac4dfaf1c5c0cce9"                # al2023-ami-2023.6.20250123.4-kernel-6.1-x86_64 (us-east-1 region)
+  ami                          = "ami-0d0f28110d16ee7d6"                # al2023-ami-2023.6.20250303.0-kernel-6.1-x86_64 (us-east-2 region)
   instance_type                = "t2.micro"                             # Free tier eligible
   subnet_id                    = aws_subnet.bastion-subnet.id           # Attach to subnet
   vpc_security_group_ids       = [aws_security_group.bastion-sg.id]     # Assign security group
