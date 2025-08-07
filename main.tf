@@ -6,7 +6,7 @@ provider "aws" {
 
 # Create a VPC
 resource "aws_vpc" "bastion-vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.10.0.0/16"
   
   tags = {
     Name = "bastion-vpc"
@@ -27,7 +27,7 @@ resource "aws_internet_gateway" "bastion-igw" {
 # Create a Public Subnet
 resource "aws_subnet" "bastion-subnet" {
   vpc_id                  = aws_vpc.bastion-vpc.id
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "10.10.1.0/24"
   map_public_ip_on_launch = true                    # Assign public IPs automatically
   
   tags = {
@@ -60,7 +60,7 @@ resource "aws_route_table_association" "bastion-rta" {
 # Create a Security Group that allows SSH
 resource "aws_security_group" "bastion-sg" {
   name        = "bastion-security-group"
-  description = "Allow SSH inbound traffic for bastion host"
+  description = "Allow SSH and HTTP inbound traffic for bastion host"
   vpc_id      = aws_vpc.bastion-vpc.id
   
   ingress {
@@ -69,12 +69,19 @@ resource "aws_security_group" "bastion-sg" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]                     # Allow SSH from anywhere (not recommended for production)
   }
-  
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "http"
+    cidr_blocks = ["0.0.0.0/0"]                     # Allow HTTP from anywhere (if we test anything like httpd)
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]                     # Allow for all outgoing traffic
   }
 
   tags = {
